@@ -90,6 +90,12 @@ jobs:
         meson setup -Dprefix=/usr -Dlibdir=lib -Dc_args="$LNICE_CFLAGS" -Ddebug=false -Doptimization=0 -Dexamples=disabled -Dgtk_doc=disabled -Dgupnp=disabled -Dgstreamer=disabled -Dtests=disabled build
         ninja -C build
         sudo ninja -C build install
+    - name: Check if any job failed
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: libnice-meson-logs
+        path: /home/runner/work/janus-gateway/janus-gateway/libnice/build/meson-logs/meson-log.txt
     - name: checkout libsrtp source
       if: ${{ matrix.deps_from_src == 'yes' }}
       uses: actions/checkout@v2

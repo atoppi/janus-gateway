@@ -80,7 +80,7 @@ jobs:
         architecture: 'x64'
     - name: install python packages
       if: ${{ matrix.deps_from_src == 'yes' }}
-      run: pip3 install wheel meson
+      run: pip3 install -Iv wheel meson==0.54.3
     - name: setup libnice from sources
       if: ${{ matrix.deps_from_src == 'yes' }}
       run: |

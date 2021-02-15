@@ -36,6 +36,8 @@ jobs:
       run: >
         sudo apt-get update && sudo apt-get --no-install-recommends -y install
         autoconf
+        build-essential
+        clang
         cmake
         gengetopt
         gtk-doc-tools
